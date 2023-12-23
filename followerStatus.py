@@ -6,7 +6,7 @@ class FollowerStatus:
         self.followers = []
         self.following = []
         self.notFollower = []
-        self.path = os.getcwd()
+        self.path = os.path.dirname(os.path.abspath(__file__))
         self.followersJSON = f"{self.path}\\followers.json"
         self.followingJSON = f"{self.path}\\following.json"
         self.followrs = f"{self.path}\\followrs.json"
@@ -19,11 +19,13 @@ class FollowerStatus:
             self.followingFunc()
             self.notFollowerFunc()
             self.getNotFollower()
-        except:
+        except Exception as ex:
             if(self.language == 'en'):
                 print("An unknown error occurred !!")
+                print(ex)
             elif(self.language == 'tr'):
                 print("Bilinmeyen bir hata oluştu !!")            
+                print(ex)
 
         if(self.language == 'en'):
             input("\n\n\nPress to Exit..      ")
